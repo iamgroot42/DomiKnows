@@ -1,7 +1,6 @@
 
 public class User {
-	String name;
-	int contact_no;
-	String address;
-	Order ord;
+	String name,address;
+	int phone_number;
+	Order current_order;
 }

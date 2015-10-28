@@ -34,7 +34,12 @@ public class Random extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());	
+		
+		System.out.println(request.getParameter("pizza1"));
+		System.out.println(request.getParameter("pizza2"));
+		System.out.println(request.getParameter("pizza3"));
+		System.out.println(request.getParameter("pizza4"));
 	}
 
 	/**
@@ -44,5 +49,6 @@ public class Random extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
 
 }
