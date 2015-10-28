@@ -1,6 +1,9 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,12 +37,9 @@ public class Random extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());	
-		
-		System.out.println(request.getParameter("pizza1"));
-		System.out.println(request.getParameter("pizza2"));
-		System.out.println(request.getParameter("pizza3"));
-		System.out.println(request.getParameter("pizza4"));
+		response.setContentType("text/html");
+		PrintWriter writer = response.getWriter();
+		//Get pizza1,size1,quantity1,....
 	}
 
 	/**
@@ -47,6 +47,7 @@ public class Random extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println(request.getParameter("name"));
 		doGet(request, response);
 	}
 	
