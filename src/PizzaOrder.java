@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,26 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Home
+ * Servlet implementation class PizzaOrder
  */
-@WebServlet("/Home")
-public class Home extends HttpServlet {
+@WebServlet("/PizzaOrder")
+public class PizzaOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Home() {
+    public PizzaOrder() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,7 +32,6 @@ public class Home extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
-
 		writer.println("<html>");
 		writer.println("<head>");
 		writer.println("<title>");
@@ -51,87 +42,7 @@ public class Home extends HttpServlet {
 		writer.println("<body>");
 		writer.println("<h2> Select your pizza(s) </h2>");
 		writer.println("<form method='post'>");
-		writer.println("<table cellspacing=\"20 px\">");
-		writer.println("<tr>");
-		writer.println("<td>");
-		writer.println("<input type=\"checkbox\" name=\"pizza1\"/>");
-		writer.println("</td>");
-		writer.println("<td>Veggie Delight</td>");
-		writer.println("<td>");
-		writer.println("<select name='size1'/>");
-		writer.println("<option value=\"small\"> Small </option>");
-		writer.println("<option value=\"medium\"> Medium </option>");
-		writer.println("<option value=\"large\"> Large </option>");
-		writer.println("</select>");
-		writer.println("<td/>");
-		writer.println("<td>");
-		writer.println("Quantity :");
-		writer.println("<input type='number' name='quantity1' value=\"1\" min=\"1\"/>");
-		writer.println("</td>");
-		writer.println("</tr>");
-		
-		writer.println("<tr>");
-		writer.println("<td>");
-		writer.println("<input type=\"checkbox\" name=\"pizza2\"/>");
-		writer.println("</td>");
-		writer.println("<td>Paneer Supremo</td>");
-		writer.println("<td>");
-		writer.println("<select name='size2'/>");
-		writer.println("<option value=\"small\"> Small </option>");
-		writer.println("<option value=\"medium\"> Medium </option>");
-		writer.println("<option value=\"large\"> Large </option>");
-		writer.println("</select>");
-		writer.println("<td/>");
-		writer.println("<td>");
-		writer.println("Quantity :");
-		writer.println("<input type='number' name='quantity2' value=\"1\" min=\"1\"/>");
-		writer.println("</td>");
-		writer.println("</tr>");
-		writer.println("<tr>");
-		writer.println("<td>");
-		writer.println("<input type=\"checkbox\" name=\"pizza3\"/>");
-		writer.println("</td>");
-		writer.println("<td>5 Pepper</td>");
-		writer.println("<td>");
-		writer.println("<select name='size3'/>");
-		writer.println("<option value=\"small\"> Small </option>");
-		writer.println("<option value=\"medium\"> Medium </option>");
-		writer.println("<option value=\"large\"> Large </option>");
-		writer.println("</select>");
-		writer.println("<td/>");
-		writer.println("<td>");
-		writer.println("Quantity :");
-		writer.println("<input type='number' name='quantity3' value=\"1\" min=\"1\"/>");
-		writer.println("</td>");
-		writer.println("</tr>");
-		writer.println("<tr>");
-		writer.println("<td>");
-		writer.println("<input type=\"checkbox\" name=\"pizza4\"/>");
-		writer.println("</td>");
-		writer.println("<td>Chef's special</td>");
-		writer.println("<td>");
-		writer.println("<select name='size4'/>");
-		writer.println("<option value=\"small\"> Small </option>");
-		writer.println("<option value=\"medium\"> Medium </option>");
-		writer.println("<option value=\"large\"> Large </option>");
-		writer.println("</select>");
-		writer.println("<td/>");
-		writer.println("<td>");
-		writer.println("Quantity :");
-		writer.println("<input type='number' name='quantity4' value=\"1\" min=\"1\"/>");
-		writer.println("</td>");
-		writer.println("</tr>");
-		writer.println("</table>");
-		writer.println("<br/>");
-		writer.println("<br/>");
-		writer.println("<input type=\"submit\" value=\"Checkout\" name=\"submit\"/>");
-		writer.println("<input type=\"reset\" value=\"Reset\" name=\"reset\"/>");
-		writer.println("</form>");
-		writer.println("</body>");
-		writer.println("</html>");
-		
-		//write similarly for every line between these two
-		writer.println("<table cellspacing=\"20 px\">");				
+		writer.println("<table cellspacing=\"20 px\">");			
 		Menu m=new Menu();
 		ArrayList<String> menew=m.getPizzas();
 		String useless;
@@ -158,7 +69,11 @@ public class Home extends HttpServlet {
 			writer.println("</tr>");
 		}
 		writer.println("</table>");
-		//write similarly for every line between these two
+		writer.println("</br></br>");
+		writer.println("<input type=\"submit\" value=\"Checkout\" name=\"submit\"/>");
+		writer.println("<input type=\"reset\" value=\"Reset\" name=\"reset\"/>");
+		writer.println("</form>");
+		writer.println("</body>");
 		writer.println("</html>");
 		
 
