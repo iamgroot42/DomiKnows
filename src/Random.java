@@ -44,19 +44,19 @@ public class Random extends HttpServlet {
 		writer.println("<html>");
 		writer.println("<head>");
 		//write similarly for every line between these two
-		writer.println("<table cellspacing="20 px">");				
+		writer.println("<table cellspacing=\"20 px\">");				
 		Menu m=new Menu();
 		ArrayList<String> menew=m.getPizzas();
 		String useless;
 		int i;
-		for(i=0;i<menew.length;i++)
+		for(i=0;i<menew.size();i++)
 		{
 			writer.println("<tr>");
 			writer.println("<td>");
 			useless="\"pizza"+i+"\"";
 			writer.println("<input type=\"checkbox\" name="+useless+"/>");
 			writer.println("</td>");
-			writer.println("<td>"+menew[i]+"</>");
+			writer.println("<td>"+menew.get(i)+"</>");
 			writer.println("<td>");
 			writer.println("<select name='size"+i+"'>");
 			writer.println("<option value=\"small\"> Small </option>");
