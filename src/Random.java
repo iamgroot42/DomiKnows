@@ -39,6 +39,8 @@ public class Random extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
+		RequestDispatcher view = request.getRequestDispatcher("HomePage.html");
+		view.forward(request, response);
 		//Get pizza1,size1,quantity1,....
 	}
 
