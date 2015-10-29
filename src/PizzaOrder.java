@@ -35,13 +35,12 @@ public class PizzaOrder extends HttpServlet {
 		writer.println("<html>");
 		writer.println("<head>");
 		writer.println("<title>");
-		writer.println("<title>");
 		writer.println("Build order");
 		writer.println("</title>");
 		writer.println("</head>");
 		writer.println("<body>");
 		writer.println("<h2> Select your pizza(s) </h2>");
-		writer.println("<form method='post'>");
+		writer.println("<form method='post' action=\"DeliveryInfo\">");
 		writer.println("<table cellspacing=\"20 px\">");			
 		Menu m=new Menu();
 		ArrayList<String> menew=m.getPizzas();
