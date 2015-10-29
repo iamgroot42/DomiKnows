@@ -40,12 +40,41 @@ public class Random extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
-		RequestDispatcher view = request.getRequestDispatcher("HomePage.html");
-		view.forward(request, response);
-		System.out.println(request.getParameter("pizza1"));
-		System.out.println(request.getParameter("size1"));
-		System.out.println(request.getParameter("quantity1"));
+
+		writer.println("<html>");
+		writer.println("<head>");
+		//write similarly for every line between these two
+		writer.println("<table cellspacing="20 px">");				
+		Menu m=new Menu();
+		ArrayList<String> menew=m.getPizzas();
+		String useless;
+		int i;
+		for(i=0;i<menew.length;i++)
+		{
+			writer.println("<tr>");
+			writer.println("<td>");
+			useless="\"pizza"+i+"\"";
+			writer.println("<input type=\"checkbox\" name="+useless+"/>");
+			writer.println("</td>");
+			writer.println("<td>"+menew[i]+"</>");
+			writer.println("<td>");
+			writer.println("<select name='size"+i+"'>");
+			writer.println("<option value=\"small\"> Small </option>");
+			writer.println("<option value=\"medium\"> Medium </option>");
+			writer.println("<option value=\"large\"> Large </option>");
+			writer.println("</select>");
+			writer.println("</td>");
+			writer.println("<td>");
+			writer.println("Quantity : ");
+			writer.println("<input type='number' name='quantity"+i+"' value=\"1\" min=\"1\"/>");
+			writer.println("</td>");
+			writer.println("</tr>");
+		}
+		writer.println("</table>");
+		//write similarly for every line between these two
+		writer.println("</html>");
 		
+
 		//Code for making sense out of pizza form-content (begins)
 		Order ord=new Order();
 		boolean anything=false;
@@ -59,27 +88,7 @@ public class Random extends HttpServlet {
 			quantities.add(Integer.parseInt(request.getParameter("quantity1")));
 			anything=true;
 		}
-		if(request.getParameter("pizza2")!=null)
-		{
-			pizzas.add(2);
-			sizes.add(request.getParameter("size2"));
-			quantities.add(Integer.parseInt(request.getParameter("quantity2")));
-			anything=true;
-		}
-		if(request.getParameter("pizza3")!=null)
-		{
-			pizzas.add(3);
-			sizes.add(request.getParameter("size3"));
-			quantities.add(Integer.parseInt(request.getParameter("quantity3")));
-			anything=true;
-		}
-		if(request.getParameter("pizza4")!=null)
-		{
-			pizzas.add(4);
-			sizes.add(request.getParameter("size4"));
-			quantities.add(Integer.parseInt(request.getParameter("quantity4")));
-			anything=true;
-		}
+		
 		if(anything)
 		{
 			ord.setPizzas(pizzas);
