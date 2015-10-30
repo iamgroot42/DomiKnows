@@ -7,7 +7,7 @@ public class Order {
 	int state;
 	//Will use a hash for code of pizza and pizza names
 	ArrayList<Integer> pizzas; 
-	ArrayList<String> sizes;
+//	ArrayList<String> sizes;
 	ArrayList<Integer> quantities;
 	//Pizza name, along with size (small/medium/large)
 	public int getOrder_id() {
@@ -28,12 +28,12 @@ public class Order {
 	public void setPizzas(ArrayList<Integer> pizzas) {
 		this.pizzas = pizzas;
 	}
-	public ArrayList<String> getSizes() {
-		return sizes;
-	}
-	public void setSizes(ArrayList<String> sizes) {
-		this.sizes = sizes;
-	}
+//	public ArrayList<String> getSizes() {
+//		return sizes;
+//	}
+//	public void setSizes(ArrayList<String> sizes) {
+//		this.sizes = sizes;
+//	}
 	public ArrayList<Integer> getQuantities() {
 		return quantities;
 	}

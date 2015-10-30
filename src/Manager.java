@@ -56,12 +56,12 @@ public class Manager extends HttpServlet {
 		HashMap<Integer,User> chloro=PendingOrders.getOrders();
 		for(Integer x: chloro.keySet())
 		{
+			int y=chloro.get(x).getCurrent_order().getState();
 			writer.println("<tr>");
 			writer.println("<td>");
 			writer.println(x);
 			writer.println("</td>");
 			writer.println("<td>");
-			int y=chloro.get(x).getCurrent_order().getState();
 			writer.println(Mapper(y));
 			writer.println("</td>");
 			writer.println("<td>");

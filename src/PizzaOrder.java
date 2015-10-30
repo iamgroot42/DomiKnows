@@ -64,11 +64,11 @@ public class PizzaOrder extends HttpServlet {
 			writer.println("</td>");
 			writer.println("<td>"+menew.get(i)+"</>");
 			writer.println("<td>");
-			writer.println("<select name='size"+i+"'>");
-			writer.println("<option value=\"small\"> Small </option>");
-			writer.println("<option value=\"medium\"> Medium </option>");
-			writer.println("<option value=\"large\"> Large </option>");
-			writer.println("</select>");
+//			writer.println("<select name='size"+i+"'>");
+//			writer.println("<option value=\"small\"> Small </option>");
+//			writer.println("<option value=\"medium\"> Medium </option>");
+//			writer.println("<option value=\"large\"> Large </option>");
+//			writer.println("</select>");
 			writer.println("</td>");
 			writer.println("<td>");
 			writer.println("Quantity : ");
@@ -114,7 +114,7 @@ public class PizzaOrder extends HttpServlet {
 		{
 			ord.setPizzas(pizzas);
 			ord.setQuantities(quantities);
-			ord.setSizes(sizes);
+//			ord.setSizes(sizes);
 			//Uses last used order ID,increments it and puts it in OrderID of current order
 			ord.setOrder_id(lolwut);
 			ord.setState(1);
