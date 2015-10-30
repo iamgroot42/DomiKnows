@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +23,18 @@ public class Manager extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    private String Mapper(int x)
+    {
+    	String ret;
+    	if(x==1) ret="Order Placed";
+    	else if(x==2) ret="Preparation";
+    	else if(x==3) ret="Bake";
+    	else if(x==4) ret="Quality Check";
+    	else if(x==5) ret="Out for Delivery";
+    	else ret="Delivered";
+    	return ret;
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,18 +48,24 @@ public class Manager extends HttpServlet {
 		writer.print("<title>Pending Orders</title>");
 		writer.print("</head>");
 		writer.print("<body>");
-		writer.print("<table spacing=\"20px\">");
+		writer.print("<table cellspacing=\"20px\">");
+//		writer.print("<td>Name</td>");
 		//Fetch list of pending orders
+		HashMap<Integer,User> chloro=PendingOrders.getOrders();
+		for(Integer x: chloro.keySet())
 		{
 			writer.print("<tr>");
 			writer.print("<td>");
-			writer.print("Write Order ID here");
+			writer.print(x);
 			writer.print("</td>");
 			writer.print("<td>");
-			writer.print("Corresponding status here");
+			int y=chloro.get(x).getCurrent_order().getState();
+			writer.print(Mapper(y));
 			writer.print("</td>");
 			writer.print("<td>");
-			writer.print("<input type=\"button\" name=\"Orderid\" value=\"Update\"/>");
+			writer.print("<form method='post'>");
+			writer.print("<input type=\"button\" name=\""+x+"\" value=\"Update\"/>");
+			writer.print("</form>");
 			writer.print("</td>");
 			writer.print("</tr>");
 		}
@@ -61,7 +80,10 @@ public class Manager extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		//Update status
+		for(String y: request.getParameterMap().keySet())
+		{
+			PendingOrders.changeOrder(Integer.parseInt(request.getParameter(y)));
+		}
 	}
 
 }

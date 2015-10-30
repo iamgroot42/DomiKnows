@@ -88,7 +88,6 @@ public class PizzaOrder extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 		Order ord=new Order();
 		boolean anything=false;
 		ArrayList<Integer> pizzas=new ArrayList<Integer>();

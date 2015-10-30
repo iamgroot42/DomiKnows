@@ -10,11 +10,15 @@ import java.util.Vector;
 
 public class PendingOrders {
 	
-	public static HashMap<Integer, User> orders = new HashMap<Integer, User>();
+	private static HashMap<Integer, User> orders = new HashMap<Integer, User>();
 	private static int NumOrders = 0;
 	public static int getNumOrders()
 	{
 		return NumOrders;
+	}
+	public static HashMap<Integer,User> getOrders()
+	{
+		return orders;
 	}
 	/* not needed, remove it while submitting */
 //	public PendingOrders()
@@ -51,9 +55,10 @@ public class PendingOrders {
 		if(getOrder(orderid)!=null) {
 			int state = orders.get(orderid).current_order.getState();
 			orders.get(orderid).current_order.setState(state++);
+			if(state>6) state=6;
 			//If order completed,remove it 
-			if(state == 6)
-				orders.remove(orders.get(orderid));
+//			if(state == 6)
+//				orders.remove(orders.get(orderid));
 			return true;
 		}
 		return false;
