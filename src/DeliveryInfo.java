@@ -92,8 +92,10 @@ public class DeliveryInfo extends HttpServlet {
 		HttpSession session = request.getSession();
 		Order ord=(Order)session.getAttribute("Order");
 		usr.setCurrent_order(ord);
-		//Add order to database
 		
+		//Add order to database :
+		
+		//Redirect user to tracking page for this tracking ID
 	}
 
 }

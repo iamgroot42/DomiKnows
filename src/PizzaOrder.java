@@ -32,6 +32,12 @@ public class PizzaOrder extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
+		
+		//Set OrderID
+		HttpSession session=request.getSession();
+		int yoda=(Integer)PendingOrders.getNumOrders();
+		session.setAttribute("Order",yoda+1);
+		
 		PrintWriter writer = response.getWriter();
 		writer.println("<html>");
 		writer.println("<head>");
@@ -41,6 +47,7 @@ public class PizzaOrder extends HttpServlet {
 		writer.println("</head>");
 		writer.println("<body>");
 		writer.println("<h2> Select your pizza(s) </h2>");
+		writer.print("<h3> Order number : "+(yoda+1)+"</h3>");
 		writer.println("<form method='post'>");
 		writer.println("<table cellspacing=\"20 px\">");			
 		Menu m=new Menu();
@@ -124,21 +131,20 @@ public class PizzaOrder extends HttpServlet {
 				quantities.add(Integer.parseInt(request.getParameter("quantity"+i)));
 				anything=true;
 			}
-		}		
+		}				
+		HttpSession session=request.getSession();
+		int lolwut=(Integer)session.getAttribute("OrderID");
 		if(anything)
 		{
 			ord.setPizzas(pizzas);
 			ord.setQuantities(quantities);
 			ord.setSizes(sizes);
 			//Uses last used order ID,increments it and puts it in OrderID of current order
-			ord.setOrder_id(PendingOrders.getNumOrders());
+			ord.setOrder_id(lolwut);
 			ord.setState(1);
 		}
-		HttpSession session=request.getSession();
 		//Adding pizza order to session for being used in the next page
-		session.setAttribute("Order",ord);
-		session.setAttribute("OrderID",ord.getOrder_id());
-		//Redirect user to User Information page
-		
+		session.setAttribute("OrderID",ord);
+		//Redirect user to User Information page		
 	}
 }

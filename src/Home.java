@@ -57,8 +57,7 @@ public class Home extends HttpServlet {
 		writer.print("<input type=\"submit\" value=\"Track Order\"/>");
 		writer.print("</form>");
 		writer.print("</body>");
-		writer.print("</html>");	
-		if(request.getParameter("place-order")!=null) System.out.println("TOMATO");
+		writer.print("</html>");
 	}
 
 	/**
