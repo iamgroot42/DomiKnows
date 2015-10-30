@@ -46,10 +46,10 @@ public class DeliveryInfo extends HttpServlet {
 		name=request.getParameter("name");
 		address=request.getParameter("addresss");
 		phoneno=Integer.parseInt(request.getParameter("mobile"));
-		User usr=new User();
-		usr.setAddress(address);
-		usr.setName(name);
-		usr.setPhone_number(phoneno);
+//		User usr=new User();
+//		usr.setAddress(address);
+//		usr.setName(name);
+//		usr.setPhone_number(phoneno);
 		//Set tracking ID, redirtect to tracking page for this tracking ID
 		
 	}
