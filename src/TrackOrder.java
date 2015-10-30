@@ -70,6 +70,10 @@ public class TrackOrder extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
+		
+		//Redirect user to tracking page for this tracking ID
+		request.setAttribute("orderID", request.getParameter("orderID"));
 		RequestDispatcher view = request.getRequestDispatcher("TrackingPage");
 		view.forward(request, response);
 	}

@@ -32,12 +32,24 @@ public class TrackingPage extends HttpServlet {
 		int trackingID;
 		try
 		{
-			trackingID=Integer.parseInt(request.getParameter("orderID"));
+			trackingID=(Integer)request.getAttribute("orderID");
 		}
 		catch(Exception e)
 		{
 			trackingID=-1;
 		}
+		if(trackingID==-1)
+		{
+			try
+			{
+				trackingID=Integer.parseInt(request.getParameter("orderID"));
+			}
+			catch(Exception e)
+			{
+				//Dance
+			}
+		}
+		System.out.println(trackingID);
 		//Work with this OrderID and show status
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
