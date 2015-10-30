@@ -47,11 +47,12 @@ public class TrackingPage extends HttpServlet {
 		writer.print("Track Order");
 		writer.print("</title>");
 		writer.print("</head>");
-		writer.print("<body>");
-		int state=4;
-//		state= state of corresponding order from file
-		if(true && trackingID!=-1) //If tracking Id exists
+		writer.print("<body>");		
+		if(PendingOrders.getOrder(trackingID)!=null && trackingID!=-1) //If tracking Id exists
 		{
+			User luke=PendingOrders.getOrder(trackingID);
+			Order anakin=luke.getCurrent_order();
+			int state=anakin.getState();
 			writer.print("<h2> Order number : "+trackingID+" </h2>");
 			writer.print("<h3> Progress : </h3>");
 			writer.print("<ul>");

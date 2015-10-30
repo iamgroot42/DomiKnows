@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,7 +49,7 @@ public class TrackOrder extends HttpServlet {
 		writer.print("<body>");
 		writer.print("<h2>Enter Tracking ID </h2>");
 		writer.print("<body>");
-		writer.print("<form method='post' action=\"TrackingPage\">");
+		writer.print("<form method='post'>");
 		writer.print("<table cellspacing=\"20 px\">");
 		writer.print("<tr>");
 		writer.print("<td>Tracking ID: </td>");
@@ -69,104 +70,7 @@ public class TrackOrder extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-		int trackingID=Integer.parseInt(request.getParameter("orderID"));
-		//Work with this OrderID and redirect user to status page
-		response.setContentType("text/html");
-		PrintWriter writer = response.getWriter();
-		writer.print("<html>");
-		writer.print("<head>");
-		writer.print("<title>");
-		writer.print("Track Order");
-		writer.print("</title>");
-		writer.print("</head>");
-		writer.print("<body>");
-		writer.print("Progress :");
-		int state=4;
-//		request.getParameter(arg0)
-//		state= state of corresponding order from file
-		if(true) //If tracking Id exists
-		{
-			writer.print("<ul>");
-			writer.print("<li>");
-			if(state>0)
-			{
-				writer.print("<b>");
-				writer.print("Order Placed");
-				writer.print("</b>");
-			}
-			else
-			{
-				writer.print("Order Placed");
-			}
-			writer.print("</li>");
-			writer.print("<li>");
-			if(state>1)
-			{
-				writer.print("<b>");
-				writer.print("Preparation");
-				writer.print("</b>");
-			}
-			else
-			{
-				writer.print("Preparation");
-			}
-			writer.print("</li>");
-			writer.print("<li>");
-			if(state>2)
-			{
-				writer.print("<b>");
-				writer.print("Bake");
-				writer.print("</b>");
-			}
-			else
-			{
-				writer.print("Bake");
-			}
-			writer.print("</li>");
-			writer.print("<li>");
-			if(state>3)
-			{
-				writer.print("<b>");
-				writer.print("Quality Check");
-				writer.print("</b>");
-			}
-			else
-			{
-				writer.print("Quality Check");
-			}
-			writer.print("</li>");
-			writer.print("<li>");
-			if(state>4)
-			{
-				writer.print("<b>");
-				writer.print("Out for Delivery");
-				writer.print("</b>");
-			}
-			else
-			{
-				writer.print("Out for Delivery");
-			}
-			writer.print("</li>");
-			writer.print("<li>");
-			if(state>5)
-			{
-				writer.print("<b>");
-				writer.print("Delivered");
-				writer.print("</b>");
-			}
-			else
-			{
-				writer.print("Delivered");
-			}
-			writer.print("</li>");
-			writer.print("</ul>");
-		}
-		else
-		{
-			writer.println("Order with this tracking ID not placed yet");
-		}
-		writer.print("</body>");
-		writer.print("</html>");
+		RequestDispatcher view = request.getRequestDispatcher("TrackingPage");
+		view.forward(request, response);
 	}
 }

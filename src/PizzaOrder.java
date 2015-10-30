@@ -35,9 +35,8 @@ public class PizzaOrder extends HttpServlet {
 		
 		//Set OrderID
 		HttpSession session=request.getSession();
-		int yoda=(Integer)PendingOrders.getNumOrders();
-		session.setAttribute("Order",yoda+1);
-		
+		int yoda=PendingOrders.getNumOrders();
+		session.setAttribute("OrderID", yoda+1);
 		PrintWriter writer = response.getWriter();
 		writer.println("<html>");
 		writer.println("<head>");
@@ -82,30 +81,6 @@ public class PizzaOrder extends HttpServlet {
 		writer.println("</form>");
 		writer.println("</body>");
 		writer.println("</html>");
-		
-		//Code for making sense out of Track-Order page (ends)
-		if(request.getParameter("orderID")!=null)
-		{
-			//bleh
-		}
-		//Code for making sense out of Track-Order page (ends)
-		
-		//Code for making sense out of User-form page (begins)
-		User usr=new User();
-		//Checks kind of redundant ; checking done at HTML
-		if(request.getParameter("name")!=null)
-		{
-			usr.setName(request.getParameter("name"));
-		}
-		if(request.getParameter("mobile")!=null)
-		{
-			usr.setPhone_number(Integer.parseInt(request.getParameter("name")));
-		}
-		if(request.getParameter("address")!=null)
-		{
-			usr.setAddress(request.getParameter("address"));
-		}
-		//Code for making sense out of User-form page (ends)
 	}
 
 	/**
@@ -144,7 +119,8 @@ public class PizzaOrder extends HttpServlet {
 			ord.setState(1);
 		}
 		//Adding pizza order to session for being used in the next page
-		session.setAttribute("OrderID",ord);
+		session.setAttribute("Order",ord);
+		response.sendRedirect("DeliveryInfo");
 		//Redirect user to User Information page		
 	}
 }

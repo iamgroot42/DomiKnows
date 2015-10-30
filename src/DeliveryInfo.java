@@ -83,7 +83,7 @@ public class DeliveryInfo extends HttpServlet {
 		int phoneno;
 		//Mandatory fields, will never be null:
 		name=request.getParameter("name");
-		address=request.getParameter("addresss");
+		address=request.getParameter("address");
 		phoneno=Integer.parseInt(request.getParameter("mobile"));
 		User usr=new User();
 		usr.setAddress(address);
@@ -94,8 +94,13 @@ public class DeliveryInfo extends HttpServlet {
 		usr.setCurrent_order(ord);
 		
 		//Add order to database :
+		PendingOrders.insertOrder(ord.getOrder_id(), usr);
+		session.invalidate(); //Getting rid of session
 		
 		//Redirect user to tracking page for this tracking ID
+		request.setAttribute("orderID", ord.getOrder_id());
+		RequestDispatcher view = request.getRequestDispatcher("TrackingPage");
+		view.forward(request, response);
 	}
 
 }

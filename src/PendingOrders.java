@@ -10,11 +10,11 @@ import java.util.Vector;
 
 public class PendingOrders {
 	
-	private static HashMap<Integer, User> orders = new HashMap<Integer, User>();
+	public static HashMap<Integer, User> orders = new HashMap<Integer, User>();
 	private static int NumOrders = 0;
 	public static int getNumOrders()
 	{
-		return NumOrders++;
+		return NumOrders;
 	}
 	/* not needed, remove it while submitting */
 //	public PendingOrders()
@@ -39,16 +39,16 @@ public class PendingOrders {
 	public static void insertOrder(int orderid, User user)
 	{
 		orders.put(orderid, user);
+		NumOrders++;
 	}
-	
-	public static boolean getOrder(int orderid)
+	public static User getOrder(int orderid)
 	{
-		return orders.containsKey(orderid);
+		return orders.get(orderid);
 	}
 	
 	public static boolean changeOrder(int orderid)
 	{
-		if(getOrder(orderid)) {
+		if(getOrder(orderid)!=null) {
 			int state = orders.get(orderid).current_order.getState();
 			orders.get(orderid).current_order.setState(state++);
 			//If order completed,remove it 
