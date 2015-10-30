@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class PizzaOrder
@@ -129,8 +130,15 @@ public class PizzaOrder extends HttpServlet {
 			ord.setPizzas(pizzas);
 			ord.setQuantities(quantities);
 			ord.setSizes(sizes);
+			//Uses last used order ID,increments it and puts it in OrderID of current order
+			ord.setOrder_id(PendingOrders.getNumOrders());
+			ord.setState(1);
 		}
-		//Push this order into the system
-		//Redirect user to UserInformation page
+		HttpSession session=request.getSession();
+		//Adding pizza order to session for being used in the next page
+		session.setAttribute("Order",ord);
+		session.setAttribute("OrderID",ord.getOrder_id());
+		//Redirect user to User Information page
+		
 	}
 }
