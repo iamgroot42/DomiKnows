@@ -74,8 +74,9 @@ public class TrackOrder extends HttpServlet {
 		doGet(request, response);
 		
 		//Redirect user to tracking page for this tracking ID
-		request.setAttribute("orderID", request.getParameter("orderID"));
-		RequestDispatcher view = request.getRequestDispatcher("TrackingPage");
-		view.forward(request, response);
+		response.sendRedirect("TrackingPage?orderID="+request.getParameter("orderID"));
+		// request.setAttribute("orderID", request.getParameter("orderID"));
+		// RequestDispatcher view = request.getRequestDispatcher("TrackingPage");
+		// view.forward(request, response);
 	}
 }
