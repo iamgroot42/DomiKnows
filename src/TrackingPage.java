@@ -1,4 +1,5 @@
-
+//@author : Anshuman Suri - 2014021
+//@author : Satyam Kumar - 2014096
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,7 +50,6 @@ public class TrackingPage extends HttpServlet {
 				//Dance
 			}
 		}
-		System.out.println(trackingID);
 		//Work with this OrderID and show status
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();

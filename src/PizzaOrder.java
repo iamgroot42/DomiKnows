@@ -1,4 +1,5 @@
-
+//@author : Anshuman Suri - 2014021
+//@author : Satyam Kumar - 2014096
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,6 +37,7 @@ public class PizzaOrder extends HttpServlet {
 		//Set OrderID
 		HttpSession session=request.getSession();
 		int yoda=PendingOrders.getNumOrders();
+		PendingOrders.incNumOrders();
 		session.setAttribute("OrderID", yoda+1);
 		PrintWriter writer = response.getWriter();
 		writer.println("<html>");

@@ -1,12 +1,7 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+//@author : Anshuman Suri - 2014021
+//@author : Satyam Kumar - 2014096
+
 import java.util.HashMap;
-import java.util.Vector;
 
 public class PendingOrders {
 	
@@ -15,6 +10,10 @@ public class PendingOrders {
 	public static int getNumOrders()
 	{
 		return NumOrders;
+	}
+	public static void incNumOrders()
+	{
+		NumOrders++;
 	}
 	public static HashMap<Integer,User> getOrders()
 	{
@@ -43,7 +42,6 @@ public class PendingOrders {
 	public static void insertOrder(int orderid, User user)
 	{
 		orders.put(orderid, user);
-		NumOrders++;
 	}
 	public static User getOrder(int orderid)
 	{
@@ -54,7 +52,7 @@ public class PendingOrders {
 	{
 		if(getOrder(orderid)!=null) {
 			int state = orders.get(orderid).current_order.getState();
-			orders.get(orderid).current_order.setState(state++);
+			orders.get(orderid).current_order.setState(++state);
 			if(state>6) state=6;
 			//If order completed,remove it 
 //			if(state == 6)
