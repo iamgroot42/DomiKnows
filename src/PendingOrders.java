@@ -6,15 +6,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.HashMap;
+import java.util.Vector;
 
 public class PendingOrders {
 	
-	private static HashMap<Integer, Integer> orders;
+	private static HashMap<Integer, User> orders;
 	private static int NumOrders;
-	public PendingOrders()
+	public static int getNumOrders()
 	{
+		return NumOrders++;
+	}
+	public PendingOrders()
+	{		
 		BufferedReader in= null;
-		orders = new HashMap<Integer, Integer>();
+		orders = new HashMap<Integer, User>();
 		String line, tmp[];
 		try {
 			in = new BufferedReader(new FileReader("Orders.txt"));
@@ -32,7 +37,7 @@ public class PendingOrders {
 	
 	public static void insertOrder(int orderid)
 	{
-		orders.put(orderid, 1); NumOrders++;
+		orders.put(orderid, 1);
 	}
 	
 	public static boolean getOrder(int orderid)
@@ -44,6 +49,11 @@ public class PendingOrders {
 	{
 		if(getOrder(orderid)) {
 			orders.put(orderid, orders.get(orderid) + 1);
+			//If order completed,remove it 
+			if(orders.get(orderid)==6)
+			{
+				orders.remove(orders.get(orderid));
+			}
 			return true;
 		}
 		else return false;

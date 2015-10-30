@@ -83,6 +83,7 @@ public class TrackOrder extends HttpServlet {
 		writer.print("<body>");
 		writer.print("Progress :");
 		int state=4;
+//		request.getParameter(arg0)
 //		state= state of corresponding order from file
 		if(true) //If tracking Id exists
 		{
