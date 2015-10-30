@@ -85,13 +85,6 @@ public class DeliveryInfo extends HttpServlet {
 		name=request.getParameter("name");
 		address=request.getParameter("addresss");
 		phoneno=Integer.parseInt(request.getParameter("mobile"));
-<<<<<<< HEAD
-//		User usr=new User();
-//		usr.setAddress(address);
-//		usr.setName(name);
-//		usr.setPhone_number(phoneno);
-		//Set tracking ID, redirtect to tracking page for this tracking ID
-=======
 		User usr=new User();
 		usr.setAddress(address);
 		usr.setName(name);
@@ -100,7 +93,6 @@ public class DeliveryInfo extends HttpServlet {
 		Order ord=(Order)session.getAttribute("Order");
 		usr.setCurrent_order(ord);
 		//Add order to database
->>>>>>> 89f55abfb32e28a728332388b45577a4944d3892
 		
 	}
 
