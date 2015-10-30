@@ -49,6 +49,7 @@ public class Manager extends HttpServlet {
 		writer.print("</head>");
 		writer.print("<body>");
 		writer.print("<table cellspacing=\"20px\">");
+		writer.print("<form method='post'>");
 //		writer.print("<td>Name</td>");
 		//Fetch list of pending orders
 		HashMap<Integer,User> chloro=PendingOrders.getOrders();
@@ -63,12 +64,11 @@ public class Manager extends HttpServlet {
 			writer.print(Mapper(y));
 			writer.print("</td>");
 			writer.print("<td>");
-			writer.print("<form method='post'>");
 			writer.print("<input type=\"button\" name=\""+x+"\" value=\"Update\"/>");
-			writer.print("</form>");
 			writer.print("</td>");
 			writer.print("</tr>");
 		}
+		writer.print("</form>");
 		writer.print("</table>");
 		writer.print("</body>");
 		writer.print("</html>");
@@ -79,9 +79,12 @@ public class Manager extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+//		doGet(request, response);
+		System.out.println("BC print kyun nahi ho raha?! This part is effing same as PizzaOrder's last part of doPost() :'(");
+		if(request.getParameter("1")!=null) System.out.println("Kuch to hua hai"); 
 		for(String y: request.getParameterMap().keySet())
 		{
+			System.out.println("I got a button :) ");
 			PendingOrders.changeOrder(Integer.parseInt(request.getParameter(y)));
 		}
 	}
