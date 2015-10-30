@@ -25,7 +25,15 @@ public class Menu {
 	public ArrayList<String> getPizzas() {
 		return pizzas;
 	}
-
+	
+	public String thisPizza(int x)
+	{
+		if(x<pizzas.size())
+		{
+			return pizzas.get(x);
+		}
+		return ""; 
+	}
 	public void setPizzas(ArrayList<String> pizzas) {
 		this.pizzas = pizzas;
 	}

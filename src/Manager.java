@@ -3,6 +3,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -56,13 +57,33 @@ public class Manager extends HttpServlet {
 		HashMap<Integer,User> chloro=PendingOrders.getOrders();
 		for(Integer x: chloro.keySet())
 		{
-			int y=chloro.get(x).getCurrent_order().getState();
+			Order obi=chloro.get(x).getCurrent_order();
+			int y=obi.getState();
 			writer.println("<tr>");
 			writer.println("<td>");
 			writer.println(x);
 			writer.println("</td>");
 			writer.println("<td>");
 			writer.println(Mapper(y));
+			writer.println("</td>");
+			writer.println("<td>");
+			Menu m=new Menu();
+			ArrayList<Integer> moto=obi.getQuantities();
+			int darth;
+			for(darth=0;darth<obi.getPizzas().size();darth++)
+			{
+				writer.println(m.thisPizza(darth)+"("+moto.get(darth)+")");
+				writer.println("</br>");
+			}
+			User usr=chloro.get(x);
+			writer.println("<td>");
+			writer.println(usr.getName());
+			writer.println("</td>");
+			writer.println("<td>");
+			writer.println(usr.getAddress());
+			writer.println("</td>");
+			writer.println("<td>");
+			writer.println(usr.getPhone_number());
 			writer.println("</td>");
 			writer.println("<td>");
 			writer.println("<input type=\"submit\" name=\""+x+"\" value=\"Update\"/>");
@@ -99,13 +120,33 @@ public class Manager extends HttpServlet {
 		HashMap<Integer,User> chloro=PendingOrders.getOrders();
 		for(Integer x: chloro.keySet())
 		{
+			Order obi=chloro.get(x).getCurrent_order();
+			int y=obi.getState();
 			writer.println("<tr>");
 			writer.println("<td>");
 			writer.println(x);
 			writer.println("</td>");
 			writer.println("<td>");
-			int y=chloro.get(x).getCurrent_order().getState();
 			writer.println(Mapper(y));
+			writer.println("</td>");
+			writer.println("<td>");
+			Menu m=new Menu();
+			ArrayList<Integer> moto=obi.getQuantities();
+			int darth;
+			for(darth=0;darth<obi.getPizzas().size();darth++)
+			{
+				writer.println(m.thisPizza(darth)+"("+moto.get(darth)+")");
+				writer.println("</br>");
+			}
+			User usr=chloro.get(x);
+			writer.println("<td>");
+			writer.println(usr.getName());
+			writer.println("</td>");
+			writer.println("<td>");
+			writer.println(usr.getAddress());
+			writer.println("</td>");
+			writer.println("<td>");
+			writer.println(usr.getPhone_number());
 			writer.println("</td>");
 			writer.println("<td>");
 			writer.println("<input type=\"submit\" name=\""+x+"\" value=\"Update\"/>");

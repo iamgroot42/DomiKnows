@@ -40,24 +40,24 @@ public class Home extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
-		writer.print("<html>");
-		writer.print("<head>");
-		writer.print("<title>");
-		writer.print("Contact Info");
-		writer.print("</title>");
-		writer.print("</head>");
-		writer.print("<body>");
-		writer.print("<h2> Welcome to Pizza Planet! </h2>");
-		writer.print("</br></br>");
-		writer.print("<form action=\"PizzaOrder\" method=\"get\">");
-		writer.print("<input type=\"submit\" value=\"Place Order\"/>");
-		writer.print("</form>");
-		writer.print("</br></br>");
-		writer.print("<form action=\"TrackOrder\" method=\"get\">");
-		writer.print("<input type=\"submit\" value=\"Track Order\"/>");
-		writer.print("</form>");
-		writer.print("</body>");
-		writer.print("</html>");
+		writer.println("<html>");
+		writer.println("<head>");
+		writer.println("<title>");
+		writer.println("Pizza Planet");
+		writer.println("</title>");
+		writer.println("</head>");
+		writer.println("<body>");
+		writer.println("<h2> Welcome to Pizza Planet! </h2>");
+		writer.println("</br></br>");
+		writer.println("<form action=\"PizzaOrder\" method=\"get\">");
+		writer.println("<input type=\"submit\" value=\"Place Order\"/>");
+		writer.println("</form>");
+		writer.println("</br></br>");
+		writer.println("<form action=\"TrackOrder\" method=\"get\">");
+		writer.println("<input type=\"submit\" value=\"Track Order\"/>");
+		writer.println("</form>");
+		writer.println("</body>");
+		writer.println("</html>");
 	}
 
 	/**

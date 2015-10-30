@@ -15,6 +15,10 @@ public class PendingOrders {
 	{
 		NumOrders++;
 	}
+	public static void decNumOrders()
+	{
+		NumOrders--;
+	}
 	public static HashMap<Integer,User> getOrders()
 	{
 		return orders;

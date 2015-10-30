@@ -118,10 +118,15 @@ public class PizzaOrder extends HttpServlet {
 			//Uses last used order ID,increments it and puts it in OrderID of current order
 			ord.setOrder_id(lolwut);
 			ord.setState(1);
+			//Adding pizza order to session for being used in the next page
+			session.setAttribute("Order",ord);
+			response.sendRedirect("DeliveryInfo");
+		}	
+		else
+		{
+			//Hack:
+			PendingOrders.decNumOrders();
+			response.sendRedirect("PizzaOrder");
 		}
-		//Adding pizza order to session for being used in the next page
-		session.setAttribute("Order",ord);
-		response.sendRedirect("DeliveryInfo");
-		//Redirect user to User Information page		
 	}
 }

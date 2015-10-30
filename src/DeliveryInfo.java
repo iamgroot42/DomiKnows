@@ -100,9 +100,10 @@ public class DeliveryInfo extends HttpServlet {
 		session.invalidate(); //Get rid of session
 		
 		//Redirect user to tracking page for this tracking ID
-		request.setAttribute("orderID", ord.getOrder_id());
-		RequestDispatcher view = request.getRequestDispatcher("TrackingPage");
-		view.forward(request, response);
+//		request.setAttribute("orderID", ord.getOrder_id());
+		response.sendRedirect("TrackingPage?orderID="+ord.getOrder_id());
+//		RequestDispatcher view = request.getRequestDispatcher("TrackingPage");
+//		view.forward(request, response);
 	}
 
 }
