@@ -40,7 +40,7 @@ public class PizzaOrder extends HttpServlet {
 		writer.println("</head>");
 		writer.println("<body>");
 		writer.println("<h2> Select your pizza(s) </h2>");
-		writer.println("<form method='post' action=\"DeliveryInfo\">");
+		writer.println("<form method='post'>");
 		writer.println("<table cellspacing=\"20 px\">");			
 		Menu m=new Menu();
 		ArrayList<String> menew=m.getPizzas();
@@ -75,29 +75,6 @@ public class PizzaOrder extends HttpServlet {
 		writer.println("</body>");
 		writer.println("</html>");
 		
-
-		//Code for making sense out of pizza form-content (begins)
-		Order ord=new Order();
-		boolean anything=false;
-		ArrayList<Integer> pizzas=new ArrayList<Integer>();
-		ArrayList<String> sizes=new ArrayList<String>();
-		ArrayList<Integer> quantities=new ArrayList<Integer>();
-		if(request.getParameter("pizza1")!=null)
-		{
-			pizzas.add(1);
-			sizes.add(request.getParameter("size1"));
-			quantities.add(Integer.parseInt(request.getParameter("quantity1")));
-			anything=true;
-		}
-		
-		if(anything)
-		{
-			ord.setPizzas(pizzas);
-			ord.setQuantities(quantities);
-			ord.setSizes(sizes);
-		}
-		//Code for making sense out of pizza form-content (begins)
-		
 		//Code for making sense out of Track-Order page (ends)
 		if(request.getParameter("orderID")!=null)
 		{
@@ -129,6 +106,31 @@ public class PizzaOrder extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		Order ord=new Order();
+		boolean anything=false;
+		ArrayList<Integer> pizzas=new ArrayList<Integer>();
+		ArrayList<String> sizes=new ArrayList<String>();
+		ArrayList<Integer> quantities=new ArrayList<Integer>();
+		int i;
+		Menu m=new Menu();
+		ArrayList<String> mewto=m.getPizzas();
+		for(i=0;i<mewto.size();i++)
+		{
+			if(request.getParameter("pizza"+i)!=null)
+			{
+				pizzas.add(i);
+				sizes.add(request.getParameter("size"+i));
+				quantities.add(Integer.parseInt(request.getParameter("quantity"+i)));
+				anything=true;
+			}
+		}		
+		if(anything)
+		{
+			ord.setPizzas(pizzas);
+			ord.setQuantities(quantities);
+			ord.setSizes(sizes);
+		}
+		//Push this order into the system
+		//Redirect user to UserInformation page
 	}
-
 }

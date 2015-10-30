@@ -40,6 +40,17 @@ public class DeliveryInfo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		String name,address;
+		int phoneno;
+		//Mandatory fields, will never be null:
+		name=request.getParameter("name");
+		address=request.getParameter("addresss");
+		phoneno=Integer.parseInt(request.getParameter("mobile"));
+		User usr=new User();
+		usr.setAddress(address);
+		usr.setName(name);
+		usr.setPhone_number(phoneno);
+		//Set tracking ID, redirtect to tracking page for this tracking ID
 	}
 
 }
