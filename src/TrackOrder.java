@@ -85,45 +85,80 @@ public class TrackOrder extends HttpServlet {
 		int state=4;
 //		state= state of corresponding order from file
 		writer.print("<ul>");
+		writer.print("<li>");
 		if(state>0)
 		{
-			writer.print("<li>");
+			writer.print("<b>");
 			writer.print("Order Placed");
-			writer.print("</li>");
+			writer.print("</b>");
 		}
+		else
+		{
+			writer.print("Order Placed");
+		}
+		writer.print("</li>");
+		writer.print("<li>");
 		if(state>1)
 		{
-			writer.print("<li>");
+			writer.print("<b>");
 			writer.print("Preparation");
-			writer.print("</li>");
+			writer.print("</b>");
 		}
+		else
+		{
+			writer.print("Preparation");
+		}
+		writer.print("</li>");
+		writer.print("<li>");
 		if(state>2)
 		{
-			writer.print("<li>");
+			writer.print("<b>");
 			writer.print("Bake");
-			writer.print("</li>");
+			writer.print("</b>");
 		}
+		else
+		{
+			writer.print("Bake");
+		}
+		writer.print("</li>");
+		writer.print("<li>");
 		if(state>3)
 		{
-			writer.print("<li>");
+			writer.print("<b>");
 			writer.print("Quality Check");
-			writer.print("</li>");
+			writer.print("</b>");
 		}
+		else
+		{
+			writer.print("Quality Check");
+		}
+		writer.print("</li>");
+		writer.print("<li>");
 		if(state>4)
 		{
-			writer.print("<li>");
+			writer.print("<b>");
 			writer.print("Out for Delivery");
-			writer.print("</li>");
+			writer.print("</b>");
 		}
+		else
+		{
+			writer.print("Out for Delivery");
+		}
+		writer.print("</li>");
+		writer.print("<li>");
 		if(state>5)
 		{
-			writer.print("<li>");
+			writer.print("<b>");
 			writer.print("Delivered");
-			writer.print("</li>");
+			writer.print("</b>");
 		}
+		else
+		{
+			writer.print("Delivered");
+		}
+		writer.print("</li>");
 		writer.print("</ul>");
 		writer.print("</body>");
 		writer.print("</html>");
 	}
-
 }
