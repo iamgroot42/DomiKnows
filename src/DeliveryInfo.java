@@ -80,11 +80,11 @@ public class DeliveryInfo extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		String name,address;
-		int phoneno;
+		long phoneno;
 		//Mandatory fields, will never be null:
 		name=request.getParameter("name");
 		address=request.getParameter("address");
-		phoneno=Integer.parseInt(request.getParameter("mobile"));
+		phoneno=Long.parseLong(request.getParameter("mobile"));
 		User usr=new User();
 		usr.setAddress(address);
 		usr.setName(name);
